@@ -1,0 +1,11 @@
+linear regression before optimization :
+    a = n⋅∑(x.y)−∑(x)⋅∑(y) / n⋅∑(x**2)−∑(x)**2
+    b = ∑(y)−a⋅∑(x) / n
+    y = a * x + b
+
+linear regression after optimization :
+    a = a - learning_rate * ∂J/∂a
+    b = b - learning_rate * ∂J/∂b
+    da = ∂J/∂a = −2/n * ∑x(y − y_pred)
+    db = ∂J/∂b = −2/n * ∑(y − y_pred)
+    y = a * x + b

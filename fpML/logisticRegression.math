@@ -1,0 +1,18 @@
+math formula : 
+sigmoid(z) = 1 / (1 + e^-z)
+z = ∑(f.w)
+-> f is the feature vector and w is the weight vector of the model
+
+prediction = sigmoid(z)
+-> Sigmoid function is used to convert the output of the linear equation to a probability
+
+gradient = ∑((prediction - y) * xi)
+-> graddient is the derivative of the cost function
+-> y is the actual value and xi is the feature value
+
+weights = weights - learning_rate * gradient / m
+weights = ∑(weights - learning_rate * gradient) / m
+
+-> weights are updated using the gradient and the learning rate
+-> m is the number of samples in the dataset
+-> the learning rate is a hyperparameter that controls how much the weights are updated

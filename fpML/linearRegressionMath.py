@@ -13,11 +13,6 @@ n = 5
 a = (n * sum(x * y) - sum(x) * sum(y)) / (n * sum(x**2) - sum(x)**2)
 b = (sum(y) - a * sum(x)) / n
 
-print(a)
-print(b)
-#y = a * x + b
-print((a * 90)+ b)
-
 def gradient_descent(x, y, a, b, learning_rate, iterations):
     n = len(y)
     for _ in range(iterations):
@@ -41,5 +36,14 @@ def gradient_descent(x, y, a, b, learning_rate, iterations):
 x = np.array([1, 2, 3, 4, 5])  # Independent variable
 y = np.array([2, 4, 6, 8, 10]) # Dependent variable
 
-a, b = gradient_descent(x, y)
-print(f"Slope: {a}, Intercept: {b}")
+learning_rate = 0.01
+iterations = 1000
+
+print(f"a : {a}")
+print(f"b : {b}")
+#y = a * x + b
+print(f"y : {(a * 90)+ b}")
+a, b = gradient_descent(x, y, a, b, learning_rate, iterations)
+print(f"a after optimization : {a}")
+print(f"b after optimization : {b}")
+print(f"y after optimization : {(a * 90)+ b}")
