@@ -2,27 +2,28 @@ import math
 import pandas as pd
 import numpy as np
 
+#math formulat 
+# sigmoid(z) = 1 / (1 + e^-z) 
+# z = ∑(f.w)
+# gradient = (1/m) * ∑(y_pred - y) * x
+# weights = ∑weights - learning_rate * gradient
+
 #python code
 def sigmoid(z):
     return 1 / (1 + np.exp(-z))
 
-def predict_probability(features, weights):
-    z = sum(f * w for f, w in zip(features, weights))
+def predict_probability(X, weights):
+    z = np.dot(X, weights)
     return sigmoid(z)
 
 def gradient_descent(X, y, weights, learning_rate, iterations):
     m = len(y)
     for _ in range(iterations):
-        gradients = np.zeros(len(weights))
-        for i in range(m):
-            xi = X[i]
-            yi = y[i]
-            prediction = predict_probability(xi, weights)
-            for j in range(len(weights)):
-                gradients[j] += (prediction - yi) * xi[j]
-        for j in range(len(weights)):
-            weights[j] -= learning_rate * gradients[j] / m
+        y_pred = predict_probability(X, weights)
+        gradient = (1 / m) * np.dot(X.T, (y_pred - y))
+        weights = weights - learning_rate * gradient
     return weights
+
 
 data = {
     'Maths': [80, 60, 90, 65, 75],
@@ -38,12 +39,12 @@ weights = np.zeros(len(X[0]))
 
 learning_rate = 0.02
 iterations = 1000
-print(f"weights{weights}")
 weights = gradient_descent(X, y, weights, learning_rate, iterations)
-print(f"weights{weights}")
-newStudent = [60, 20]
+newStudent = [75, 60]
 probabilite = predict_probability(newStudent, weights)
 admit = 1 if probabilite >= 0.5 else 0
+
+print("logistic regression")
 if (admit == 1):
     print("admit : oui")
 else:

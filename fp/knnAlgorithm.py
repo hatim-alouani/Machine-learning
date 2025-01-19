@@ -8,7 +8,6 @@ newFruit =[7, 200]
 
 k = 2
 
-
 def getDistance(newFruit, taille, poids, i):
     return math.sqrt((newFruit[0] - taille[i])**2 + (newFruit[1] - poids[i])**2)
 
